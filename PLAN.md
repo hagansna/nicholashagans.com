@@ -55,10 +55,10 @@ Personal homepage built with SvelteKit (Svelte 5), shadcn-svelte, and Markdown-b
 
 ## Phase 3: Blog System
 
-- [ ] Configure mdsvex in `svelte.config.js`
-- [ ] Set up Shiki for syntax highlighting with theme support
-- [ ] Create blog content directory (`src/content/blog/`)
-- [ ] Define blog post frontmatter schema:
+- [x] Configure mdsvex in `svelte.config.js`
+- [x] Set up Shiki for syntax highlighting with theme support
+- [x] Create blog content directory (`src/content/blog/`)
+- [x] Define blog post frontmatter schema:
   ```yaml
   title: string
   description: string
@@ -66,21 +66,22 @@ Personal homepage built with SvelteKit (Svelte 5), shadcn-svelte, and Markdown-b
   tags: string[]
   published: boolean
   ```
-- [ ] Create blog utilities (`src/lib/utils/blog.ts`)
+- [x] Create blog utilities (`src/lib/utils/blog.ts`)
   - `getPosts()` - fetch all published posts
   - `getPostBySlug()` - fetch single post
   - `calculateReadingTime()` - estimate reading time
   - `getAllTags()` - get unique tags
-- [ ] Build blog listing page (`/blog`)
+- [x] Build blog listing page (`/blog`)
   - Display all posts with title, date, description, tags
-  - Filter by tag
+  - Filter by tag (client-side)
   - Sort by date (newest first)
-- [ ] Build blog post page (`/blog/[slug]`)
+- [x] Build blog post page (`/blog/[slug]`)
   - Render Markdown content
   - Display metadata (date, tags, reading time)
   - Previous/Next post navigation
-- [ ] Create BlogCard component for previews
-- [ ] Create sample blog post
+- [x] Create BlogCard component for previews
+- [x] Create sample blog post
+- [x] Update homepage with latest posts preview
 
 ---
 

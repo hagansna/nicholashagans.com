@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -111,8 +112,34 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+}
 
-	p > a {
-		@apply text-primary underline;
-	}
+/* Shiki code block styling */
+.prose pre {
+	@apply !bg-muted !p-4 rounded-lg overflow-x-auto;
+}
+
+.prose pre code {
+	@apply !bg-transparent !p-0;
+}
+
+.prose code {
+	@apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre code {
+	@apply !text-sm;
+}
+
+/* Shiki dual theme support */
+.shiki,
+.shiki span {
+	color: var(--shiki-light) !important;
+	background-color: var(--shiki-light-bg) !important;
+}
+
+.dark .shiki,
+.dark .shiki span {
+	color: var(--shiki-dark) !important;
+	background-color: var(--shiki-dark-bg) !important;
 }
