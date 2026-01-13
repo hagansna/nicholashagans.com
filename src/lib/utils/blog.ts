@@ -25,26 +25,38 @@ export function formatDate(dateString: string): string {
 }
 
 /**
+ * Strip YAML frontmatter from markdown content
+ */
+function stripFrontmatter(content: string): string {
+  const frontmatterRegex = /^---\n[\s\S]*?\n---\n/;
+  return content.replace(frontmatterRegex, "");
+}
+
+/**
  * Get all published blog posts, sorted by date (newest first)
  */
 export async function getPosts(): Promise<Post[]> {
   const posts: Post[] = [];
 
-  const paths = import.meta.glob("/src/content/blog/*.md", { eager: true });
+  // Import both parsed metadata and raw content
+  const modules = import.meta.glob("/src/content/blog/*.md", { eager: true });
+  const rawFiles = import.meta.glob("/src/content/blog/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }) as Record<string, string>;
 
-  for (const path in paths) {
-    const file = paths[path];
+  for (const path in modules) {
+    const file = modules[path];
     const slug = path.split("/").pop()?.replace(".md", "") ?? "";
 
     if (file && typeof file === "object" && "metadata" in file) {
       const metadata = file.metadata as PostMetadata;
 
       if (metadata.published) {
-        // Get raw content for reading time calculation
-        const rawContent =
-          "default" in file && typeof file.default === "object"
-            ? "" // We'll estimate from metadata
-            : "";
+        // Get raw content and strip frontmatter for reading time calculation
+        const rawContent = rawFiles[path] ?? "";
+        const bodyContent = stripFrontmatter(rawContent);
 
         posts.push({
           slug,
@@ -53,7 +65,7 @@ export async function getPosts(): Promise<Post[]> {
           date: metadata.date,
           tags: metadata.tags ?? [],
           published: metadata.published,
-          readingTime: calculateReadingTime(metadata.description.repeat(10)), // Rough estimate
+          readingTime: calculateReadingTime(bodyContent),
         });
       }
     }
@@ -73,10 +85,14 @@ export async function getPost(
 ): Promise<{ post: Post; Content: Component } | null> {
   try {
     const post = await import(`../../content/blog/${slug}.md`);
+    const rawContent = (await import(`../../content/blog/${slug}.md?raw`))
+      .default as string;
 
     if (!post.metadata.published) {
       return null;
     }
+
+    const bodyContent = stripFrontmatter(rawContent);
 
     return {
       post: {
@@ -86,7 +102,7 @@ export async function getPost(
         date: post.metadata.date,
         tags: post.metadata.tags ?? [],
         published: post.metadata.published,
-        readingTime: calculateReadingTime(post.metadata.description.repeat(10)),
+        readingTime: calculateReadingTime(bodyContent),
       },
       Content: post.default,
     };
