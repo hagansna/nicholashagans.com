@@ -16,6 +16,8 @@ First off, I'll point out the obvious. This entire site (and most of this partic
 
 I am not quite sure how I feel about AI development yet. It certainly made standing up this website faster and therefore more likely to get done (I have a hard time completing personal projects in a timely manner, check Github if you don't believe me!). I will also say that I am impressed with how well the site came out, particularly given the fact that I made an effort not to intervene at all in the code. I still haven't actually looked at the generated code (I'm a bit afraid to!) but the site looks clean and functions exactly like I had envisioned it would.
 
+Anyway, here's the rest of what Claude thought my first blog should be:
+
 ## The Tech Stack
 
 This site is built with some of my favorite modern web technologies:
