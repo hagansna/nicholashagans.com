@@ -3,9 +3,12 @@
 	import { Button } from '$lib/components/ui/button';
 	import { ArrowRight } from 'lucide-svelte';
 	import BlogCard from '$lib/components/BlogCard.svelte';
+	import SEO from '$lib/components/SEO.svelte';
 
 	let { data } = $props();
 </script>
+
+<SEO description="Personal website and blog of Nicholas Hagans. Developer, board game enthusiast, and technology explorer." />
 
 <div class="container mx-auto max-w-4xl px-4 py-16 md:py-24">
 	<!-- Hero Section -->

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { siteConfig } from '$lib/config';
 	import { Button } from '$lib/components/ui/button';
 	import { Download } from 'lucide-svelte';
+	import SEO from '$lib/components/SEO.svelte';
 </script>
 
-<svelte:head>
-	<title>Resume | {siteConfig.name}</title>
-	<meta name="description" content="Resume of {siteConfig.name}" />
-</svelte:head>
+<SEO
+	title="Resume"
+	description="Professional resume of Nicholas Hagans - software engineer with expertise in web development, front-end frameworks, and data visualization."
+/>
 
 <div class="container mx-auto max-w-4xl px-4 py-16">
 	<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

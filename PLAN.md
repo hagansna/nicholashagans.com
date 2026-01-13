@@ -31,23 +31,23 @@ Personal homepage built with SvelteKit (Svelte 5), shadcn-svelte, and Markdown-b
 
 ## Phase 2: Core Pages
 
-- [ ] **Homepage** (`/`)
+- [x] **Homepage** (`/`)
   - Hero section with name and tagline
   - Brief intro
   - Latest blog post previews (3 most recent)
   - Quick links to other sections
 
-- [ ] **About** (`/about`)
+- [x] **About** (`/about`)
   - Bio/personal story
   - Skills/interests
   - Profile photo (optional)
 
-- [ ] **Resume** (`/resume`)
+- [x] **Resume** (`/resume`)
   - Styled resume content on page
   - Downloadable PDF link
   - Sections: Experience, Education, Skills, etc.
 
-- [ ] **Contact** (`/contact`)
+- [x] **Contact** (`/contact`)
   - Email link
   - Social profile links (GitHub, LinkedIn, Twitter/X, etc.)
 
@@ -87,43 +87,46 @@ Personal homepage built with SvelteKit (Svelte 5), shadcn-svelte, and Markdown-b
 
 ## Phase 4: Search & Polish
 
-- [ ] Install Fuse.js
-- [ ] Create search index from blog posts
-- [ ] Build SearchDialog component (⌘K / Ctrl+K trigger)
+- [x] Install Fuse.js
+- [x] Create search index from blog posts
+- [x] Build SearchDialog component (⌘K / Ctrl+K trigger)
   - Search posts by title, description, tags, content
   - Keyboard navigation
-- [ ] Add SEO meta tags
+- [x] Add SEO meta tags
   - Title, description, Open Graph, Twitter cards
-- [ ] Create reusable SEO component
-- [ ] Responsive design review and fixes
-- [ ] Create custom 404 page
+- [x] Create reusable SEO component
+- [x] Responsive design review and fixes
+- [x] Create custom 404 page
 - [ ] Add page transitions (optional)
-- [ ] Accessibility audit (keyboard nav, ARIA labels)
+- [x] Accessibility audit (keyboard nav, ARIA labels)
 
 ---
 
 ## Phase 5: Deployment
 
 ### 5.1 GitHub Setup
-- [ ] Create GitHub repository
-- [ ] Push code to GitHub
+
+- [x] Create GitHub repository
+- [x] Push code to GitHub
 
 ### 5.2 Vercel Setup
-- [ ] Create Vercel account (if needed)
-- [ ] Import project from GitHub
-- [ ] Verify build succeeds
-- [ ] Note the `.vercel.app` preview URL
+
+- [x] Create Vercel account (if needed)
+- [x] Import project from GitHub
+- [x] Verify build succeeds
+- [x] Note the `.vercel.app` preview URL
 
 ### 5.3 Route 53 DNS Configuration
-- [ ] In Vercel: Add custom domain `nicholashagans.com`
-- [ ] In Vercel: Add custom domain `www.nicholashagans.com`
-- [ ] Vercel will provide DNS records to configure
-- [ ] In AWS Route 53, create/update records:
+
+- [x] In Vercel: Add custom domain `nicholashagans.com`
+- [x] In Vercel: Add custom domain `www.nicholashagans.com`
+- [x] Vercel will provide DNS records to configure
+- [x] In AWS Route 53, create/update records:
   - **A Record:** `nicholashagans.com` → Vercel IP (or ALIAS to Vercel)
   - **CNAME Record:** `www.nicholashagans.com` → `cname.vercel-dns.com`
-- [ ] Wait for DNS propagation (usually minutes, up to 48 hours)
-- [ ] Verify SSL certificate is issued by Vercel
-- [ ] Test both `nicholashagans.com` and `www.nicholashagans.com`
+- [x] Wait for DNS propagation (usually minutes, up to 48 hours)
+- [x] Verify SSL certificate is issued by Vercel
+- [x] Test both `nicholashagans.com` and `www.nicholashagans.com`
 
 ---
 

@@ -2,9 +2,17 @@
 	import { page } from '$app/stores';
 	import { siteConfig } from '$lib/config';
 	import { cn } from '$lib/utils';
+	import type { Post } from '$lib/types';
 	import ThemeToggle from './ThemeToggle.svelte';
+	import SearchDialog from './SearchDialog.svelte';
 	import { Menu, X } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button';
+
+	interface Props {
+		posts: Post[];
+	}
+
+	let { posts }: Props = $props();
 
 	let mobileMenuOpen = $state(false);
 
@@ -24,7 +32,7 @@
 		</a>
 
 		<!-- Desktop Navigation -->
-		<nav class="hidden items-center gap-6 md:flex">
+		<nav class="hidden items-center gap-6 md:flex" aria-label="Main navigation">
 			{#each siteConfig.nav as item}
 				<a
 					href={item.href}
@@ -32,30 +40,40 @@
 						'text-sm font-medium transition-colors hover:text-foreground/80',
 						$page.url.pathname === item.href ? 'text-foreground' : 'text-foreground/60'
 					)}
+					aria-current={$page.url.pathname === item.href ? 'page' : undefined}
 				>
 					{item.title}
 				</a>
 			{/each}
+			<SearchDialog {posts} />
 			<ThemeToggle />
 		</nav>
 
 		<!-- Mobile Menu Button -->
 		<div class="flex items-center gap-2 md:hidden">
+			<SearchDialog {posts} />
 			<ThemeToggle />
-			<Button variant="ghost" size="icon" class="h-9 w-9" onclick={toggleMobileMenu}>
+			<Button
+				variant="ghost"
+				size="icon"
+				class="h-9 w-9"
+				onclick={toggleMobileMenu}
+				aria-expanded={mobileMenuOpen}
+				aria-controls="mobile-nav"
+				aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+			>
 				{#if mobileMenuOpen}
-					<X class="h-5 w-5" />
+					<X class="h-5 w-5" aria-hidden="true" />
 				{:else}
-					<Menu class="h-5 w-5" />
+					<Menu class="h-5 w-5" aria-hidden="true" />
 				{/if}
-				<span class="sr-only">Toggle menu</span>
 			</Button>
 		</div>
 	</div>
 
 	<!-- Mobile Navigation -->
 	{#if mobileMenuOpen}
-		<nav class="border-t border-border/40 md:hidden">
+		<nav id="mobile-nav" class="border-t border-border/40 md:hidden" aria-label="Mobile navigation">
 			<div class="container mx-auto max-w-4xl px-4 py-4">
 				{#each siteConfig.nav as item}
 					<a
@@ -64,6 +82,7 @@
 							'block py-2 text-sm font-medium transition-colors hover:text-foreground/80',
 							$page.url.pathname === item.href ? 'text-foreground' : 'text-foreground/60'
 						)}
+						aria-current={$page.url.pathname === item.href ? 'page' : undefined}
 						onclick={closeMobileMenu}
 					>
 						{item.title}

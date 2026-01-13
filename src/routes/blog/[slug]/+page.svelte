@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { siteConfig } from '$lib/config';
 	import { formatDate } from '$lib/utils/blog';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import { ArrowLeft, ArrowRight } from 'lucide-svelte';
+	import SEO from '$lib/components/SEO.svelte';
 
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>{data.post.title} | {siteConfig.name}</title>
-	<meta name="description" content={data.post.description} />
-	<meta property="og:title" content={data.post.title} />
-	<meta property="og:description" content={data.post.description} />
-	<meta property="og:type" content="article" />
-</svelte:head>
+<SEO
+	title={data.post.title}
+	description={data.post.description}
+	type="article"
+	publishedTime={data.post.date}
+	tags={data.post.tags}
+/>
 
 <article class="container mx-auto max-w-4xl px-4 py-16">
 	<!-- Header -->

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { siteConfig } from "$lib/config";
+  import SEO from '$lib/components/SEO.svelte';
 </script>
 
-<svelte:head>
-  <title>About | {siteConfig.name}</title>
-  <meta name="description" content="Learn more about {siteConfig.name}" />
-</svelte:head>
+<SEO
+  title="About"
+  description="Learn more about Nicholas Hagans - developer, board game enthusiast, with a background in Physics and Applied Urban Science."
+/>
 
 <div class="container mx-auto max-w-4xl px-4 py-16">
   <h1 class="text-4xl font-bold tracking-tight">About Me</h1>

@@ -1,7 +1,7 @@
 ---
 title: Hello World - Building My Personal Site with SvelteKit
 description: A look at how I built this website using SvelteKit, Tailwind CSS, and mdsvex for Markdown-based blogging.
-date: '2026-01-11'
+date: "2026-01-11"
 tags:
   - svelte
   - web-dev
@@ -32,7 +32,7 @@ Here's a simple example of a Svelte component:
 ```svelte
 <script lang="ts">
   let count = $state(0);
-  
+
   function increment() {
     count++;
   }

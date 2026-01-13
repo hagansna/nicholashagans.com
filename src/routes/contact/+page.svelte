@@ -4,12 +4,13 @@
   import { siGithub, siX } from "simple-icons";
   import { linkedInIcon } from "$lib/components/icons";
   import SimpleIcon from "$lib/components/SimpleIcon.svelte";
+  import SEO from '$lib/components/SEO.svelte';
 </script>
 
-<svelte:head>
-  <title>Contact | {siteConfig.name}</title>
-  <meta name="description" content="Get in touch with {siteConfig.name}" />
-</svelte:head>
+<SEO
+  title="Contact"
+  description="Get in touch with Nicholas Hagans. Reach out via email, GitHub, LinkedIn, or X."
+/>
 
 <div class="container mx-auto max-w-4xl px-4 py-16">
   <h1 class="text-4xl font-bold tracking-tight">Contact</h1>
