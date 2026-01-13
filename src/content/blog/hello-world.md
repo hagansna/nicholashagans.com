@@ -10,6 +10,12 @@ published: true
 
 Welcome to my new personal website! I'm excited to share my journey of building this site and what I learned along the way.
 
+## AI Usage
+
+First off, I'll point out the obvious. This entire site (and most of this particular blog post) was made using AI. Specifically, Claude Opus 4.5 with OpenCode. Part of the reason I wanted to make this site a blog was so I had a place to experiment with AI development and openly discuss the results.
+
+I am not quite sure how I feel about AI development yet. It certainly made standing up this website faster and therefore more likely to get done (I have a hard time completing personal projects in a timely manner, check Github if you don't believe me!). I will also say that I am impressed with how well the site came out, particularly given the fact that I made an effort not to intervene at all in the code. I still haven't actually looked at the generated code (I'm a bit afraid to!) but the site looks clean and functions exactly like I had envisioned it would.
+
 ## The Tech Stack
 
 This site is built with some of my favorite modern web technologies:
@@ -76,8 +82,8 @@ And some CSS:
 
 I'll be writing about:
 
-- Web development techniques and best practices
 - Interesting projects I'm working on
-- Tech insights and tutorials
+- Tech insights
+- Board gaming
 
 Stay tuned for more posts!
