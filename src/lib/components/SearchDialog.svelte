@@ -17,6 +17,7 @@
 	let query = $state('');
 	let results = $state<SearchResult[]>([]);
 	let selectedIndex = $state(0);
+	let triggerButtonRef = $state<HTMLButtonElement | null>(null);
 
 	// Initialize search when posts change
 	$effect(() => {
@@ -42,7 +43,8 @@
 			// Open with Cmd+K or Ctrl+K
 			if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
 				e.preventDefault();
-				open = true;
+				// Click the trigger button to open - this ensures consistent behavior
+				triggerButtonRef?.click();
 			}
 		}
 
@@ -94,6 +96,7 @@
 
 <!-- Search Trigger Button -->
 <button
+	bind:this={triggerButtonRef}
 	onclick={() => (open = true)}
 	class="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-input bg-background px-3 text-sm text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
 	aria-label="Search"
